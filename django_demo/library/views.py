@@ -7,8 +7,8 @@ from django.contrib.auth.forms import User
 from django.views.decorators.csrf import csrf_protect
 from django.contrib import messages
 
-
 from .models import Uzrasas, Kategorija
+from .forms import RegistrationForm
 
 
 def index(request):
@@ -40,11 +40,9 @@ def index(request):
 
 class UzrasasListView(generic.ListView):
     model = Uzrasas
-    # context_object_name = 'uzrasai'
     context_object_name = 'my_uzrasas_list'
-    # template_name = 'library/uzrasai.html'
     template_name = 'library/uzrasas_list.html'
-    # paginate_by = 2
+
 
 
 class UzrasasDetailView(generic.DetailView):
@@ -76,7 +74,7 @@ def search(request):
     search_results = Uzrasas.objects.filter(Q(title__icontains=query) | Q(summary__icontains=query))
     return render(request, 'library/search.html', {'uzrasai': search_results, 'query': query})
 
-
+'''
 def register(request):
     if request.method == 'POST':
         # pasiimame reikšmes iš registracijos formos
@@ -105,3 +103,10 @@ def register(request):
             return redirect('library:register')
 
     return render(request, 'library/register.html')
+'''
+def register(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+    else:
+         form = RegistrationForm()
+    return render(request, 'library/register.html', {'form': form})

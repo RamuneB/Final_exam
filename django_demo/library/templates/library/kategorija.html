@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container kategorija">
+    <h4>{{ kategorijas.first_name }}</h4>
+    <hr/>
+    <p>{{ kategorija.description }}</p>
+    </hr>
+    </br>
+    <h5>Turime {{ kategorija.first_name }} kategorijas:</h5>
+    {% for i in kategorija.uzrasai.all %}
+       <li>{{ i.title }}</li> 
+    {% endfor %}
+    </div>
+{% endblock %}

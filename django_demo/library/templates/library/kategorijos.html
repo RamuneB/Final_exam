@@ -6,6 +6,7 @@
   {% for a in kategorijos %}
     <li>
         <a href="{% url 'library:kategorija' a.id %}">{{a.first_name}}</a>
+         
     </li>
     {% endfor %}
 

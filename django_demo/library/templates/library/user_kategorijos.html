@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Mano užrašytos kateg</h1>
+    {% if kategorijos %}
+        {% for kategorija in kategorijos %}
+    <hr>
+        <ul>
+        <li><strong >Pavadinimas: {{kategorija.firs_name}}</strong></li>
+       
+            {% if kategorija.kategorija.id == user %}
+            <div>
+                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'library:my-kategorija-update' kategorija.id %}">Redaguoti</a>
+                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'library:my-kategorija-delete' kategorija.id %}">Ištrinti</a>
+            </div>
+            {% endif %}
+        <br/>
+        <a class="btn btn-primary" href="{% url 'library:my-kategorija' kategorija.id %}" role="button">Peržiūrėti</a>
+      </li>
+    </ul>
+{% endfor %}
+    {% else %}
+      <p>Nėra kategorijų...</p>
+    {% endif %}
+{% endblock %}

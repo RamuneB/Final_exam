@@ -24,6 +24,7 @@ urlpatterns = [
     path('library/', include(('library.urls', 'library'), namespace='library')),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('', RedirectView.as_view(url='library/', permanent=False))
+    path('', RedirectView.as_view(url='library/', permanent=False)),
+    path('tinymce/', include('tinymce.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
 + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

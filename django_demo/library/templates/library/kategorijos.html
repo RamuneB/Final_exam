@@ -2,11 +2,11 @@
 
 {% block content %}
   <h1>Kategorijos</h1>
-  <p>Sukurtų kategorijų sąrašas.</p>
+  <p>Sukurtų kategorijų sąrašas:</p>
   {% for a in kategorijos %}
     <li>
         <a href="{% url 'library:kategorija' a.id %}">{{a.first_name}}</a>
-         
+
     </li>
     {% endfor %}
 
@@ -28,5 +28,8 @@
               </ul>
           {% endif %}
       </nav>
+      <a class="btn btn-primary" href="{% url 'library:my-kategorija-new' %}" role="button">Kurkime naują kategoriją</a>
+    
+     
   </div>
 {% endblock %}

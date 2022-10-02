@@ -2,6 +2,7 @@
 
 {% block content %}
     <h1>Užrašai</h1></br>
+    <a class="btn btn-primary" href="{% url 'library:my-uzrasas-new' %}" role="button">Kurkime naują užrašą</a>
     {% if my_uzrasas_list %}
     <div class="row">
     {% for uzrasas in my_uzrasas_list %}
@@ -16,6 +17,7 @@
                 <div class="card-body">
                 <h6 class="card-subtitle mb-2 text-muted">{{ my_uzrasas_list.kategorija }}</h6>
                 <p class="card-text"><a href="{{ uzrasas.id }}">{{ uzrasas.title }}</a></p>
+
                 </div>
             </div>
             </div>

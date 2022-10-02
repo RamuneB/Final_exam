@@ -5,7 +5,9 @@
 
   <p><strong>Kategorija:</strong> <a href="{% url 'library:kategorija' uzrasas.kategorija.pk %}">{{ uzrasas.kategorija }}</a></p>
   <p><strong>Tekstas:</strong> {{ uzrasas.summary }}</p>
-  
+  <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'library:my-uzrasas-update' uzrasas.id %}">Redaguoti</a>
+  <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'library:my-uzrasas-delete' uzrasas.id %}">Ištrinti</a>
+
   <div style="margin-left:20px;margin-top:20px">
        
 

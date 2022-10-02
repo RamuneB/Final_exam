@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Mano užrašai:</h1>
+    <hr>
+        <ul>
+        <li><strong >Pavadinimas: {{object.uzrasas.title}}</strong></li>
+        <li><strong>Kategorija:</strong> {{ object.kategorija.first_name }}</li>
+        <li><strong>Aprašas:</strong> {{ object.kategorija.description }}</li>
+        <li><strong>Nuotrauka:</strong> {{ object.uzrasas.cover }}</li>
+
+        <br/>
+      </li>
+    </ul>
+{% endblock %}

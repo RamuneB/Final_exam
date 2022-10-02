@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Mano kategorijos:</h1>
+    <hr>
+        <ul>
+       
+        <li><strong>Kategorija:</strong> {{ object.kategorija.first_name }}</li>
+        <li><strong>Aprašas:</strong> {{ object.kategorija.description }}</li>
+      
+
+        <br/>
+      </li>
+    </ul>
+{% endblock %}

@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
     {% if messages %}
         {% for message in messages %}
@@ -17,6 +19,7 @@
 
     <div class="container register">
         <h3>Registracija</h3><br/>
+        {% comment %}
         <form method="post">
             {% csrf_token %}
             <div class="form-group">
@@ -42,6 +45,15 @@
             </div>
             <button type="submit" class="btn btn-primary register-button">Registruotis</button>
         </form>
+        {% endcomment %}
+
+        <form  method="post">
+           {% csrf_token %}
+           {{ form | crispy }}
+           <input type="submit" value="Spausti">
+        </form>
+
+
         <p>Jeigu užsiregistravote anksčiau, <a href="{% url 'login' %}"><strong>prisijunkite.</strong></a></p>
     </div>
 

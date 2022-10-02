@@ -1,27 +1,5 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Mano užrašyti urašai</h1>
-    {% if uzrasai %}
-        {% for uzrasas in uzrasai %}
-    <hr>
-        <ul>
-        <li><strong >Pavadinimas: {{uzrasas.title}}</strong></li>
-        <li><strong>Kategorija:</strong> {{ kategorija.first_name }}</li>
-        <li><strong>Aprašas:</strong> {{ kategorija.description }}</li>
-        <li><strong>Nuotrauka:</strong> {{ uzrasas.cover }}</li>
-            {% if uzrasas.uzrasas.id == user %}
-            <div>
-                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'library:my-uzrasas-update' uzrasas.id %}">Redaguoti</a>
-                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'library:my-uzrasas-delete' uzrasas.id %}">Ištrinti</a>
-            </div>
-            {% endif %}
-        <br/>
-        <a class="btn btn-primary" href="{% url 'library:my-uzrasas' uzrasas.id %}" role="button">Peržiūrėti</a>
-      </li>
-    </ul>
-{% endfor %}
-    {% else %}
-      <p>Nėra užrašų...</p>
-    {% endif %}
-{% endblock %}
+    <h1>Naujas užrašas sukurtas arba redaguotas</h1>   
+ {% endblock %}

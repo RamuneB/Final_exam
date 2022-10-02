@@ -14,7 +14,7 @@ class Uzrasas(models.Model):
     kategorija = models.ForeignKey('Kategorija', on_delete=models.SET_NULL, null=True, related_name='uzrasai')
     summary = models.TextField('Tekstas', max_length=1000)
     #genre = models.ManyToManyField('Genre')
-    cover = models.ImageField('Viršelis', upload_to='covers', null=True)
+    cover = models.ImageField('Viršelis', default="default.png", upload_to='covers')
 
     def __str__(self):
         return self.title

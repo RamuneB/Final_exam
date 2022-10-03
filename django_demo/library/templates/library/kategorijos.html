@@ -4,10 +4,13 @@
   <h1>Kategorijos</h1>
   <p>Sukurtų kategorijų sąrašas:</p>
   {% for a in kategorijos %}
+
+  <div class="kategorijos">
     <li>
         <a href="{% url 'library:kategorija' a.id %}">{{a.first_name}}</a>
 
     </li>
+ </div>
     {% endfor %}
 
     <div class="container puslapiai">

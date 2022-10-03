@@ -11,6 +11,7 @@ urlpatterns = [
     path('kategorijos/', views.kategorijos, name='kategorijos'),
     path('kategorijos/<int:kategorija_id>', views.kategorija, name='kategorija'),
     path('search/', views.search, name='search'),
+    path('filter/', views.filter, name='filter'),
     path('register/', views.register, name='register'),
     path('profilis/', views.profilis, name='profilis'),
     path('myuzrasai/', views.LoanedUzrasaiByUserListView.as_view(), name='myuzrasai'),

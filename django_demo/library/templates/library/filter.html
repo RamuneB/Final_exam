@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Filtro pagal "{{query}}" rezultatai:</h1>
+
+  {% if kategorijos %}
+  <ul>
+    {% for kategorija in kategorijos %}
+      <li>
+        <a href="{% url 'library:kategorija' kategorija.id %}">{{ kategorija.first_name }}</a>{{ uzrasas.title }}
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>Oops. Nieko neradome :(</p>
+  {% endif %}
+
+  {% endblock %}

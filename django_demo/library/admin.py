@@ -32,6 +32,7 @@ class UzrasasInstanceAdmin(admin.ModelAdmin):
 class KategorijaAdmin(admin.ModelAdmin):
     list_display = ('first_name', 'display_uzrasai')
     search_fields = ('first_name',)
+    
 
 
 admin.site.register(Uzrasas, UzrasasAdmin)

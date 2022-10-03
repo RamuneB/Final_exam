@@ -79,6 +79,10 @@ def search(request):
     search_results = Uzrasas.objects.filter(Q(title__icontains=query) | Q(summary__icontains=query))
     return render(request, 'library/search.html', {'uzrasai': search_results, 'query': query})
 
+def filter(request):
+    query = request.GET.get('query')
+    search_results = Kategorija.objects.filter(Q(first_name__icontains=query))
+    return render(request, 'library/filter.html', {'kategorijos': search_results, 'query': query})
 
 def register(request):
     if request.method == 'POST':

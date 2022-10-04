@@ -6,6 +6,7 @@
     <hr/>
     <p>{{ kategorija.description | safe }}</p>
     <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'library:my-kategorija-update' kategorija.id %}">Redaguoti</a>
+     
     <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'library:my-kategorija-delete' kategorija.id %}">Ištrinti</a>
     </hr>
     </br>

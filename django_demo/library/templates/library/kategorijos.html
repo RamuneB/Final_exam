@@ -2,18 +2,19 @@
 
 {% block content %}
   <h1>Kategorijos</h1>
+  <a class="btn1" href="{% url 'library:my-kategorija-new' %}" role="button">Kurkime naują kategoriją</a>
   <p>Sukurtų kategorijų sąrašas:</p>
   {% for a in kategorijos %}
 
   <div class="kategorijos">
     <li>
         <a href="{% url 'library:kategorija' a.id %}">{{a.first_name}}</a>
-
     </li>
  </div>
     {% endfor %}
-
+    <div class="row1">
     <div class="container puslapiai">
+        <p>Puslapiai:</p>
       <nav aria-label="...">
           {% if kategorijos.has_other_pages %}
               <ul class="pagination pagination-sm justify-content-end">
@@ -31,8 +32,11 @@
               </ul>
           {% endif %}
       </nav>
-      <a class="btn btn-primary" href="{% url 'library:my-kategorija-new' %}" role="button">Kurkime naują kategoriją</a>
+      
+
+     
     
      
+  </div>
   </div>
 {% endblock %}

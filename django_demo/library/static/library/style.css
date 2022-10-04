@@ -19,9 +19,15 @@ main {
     display: flex;
     width: 100%;
     flex-direction: column;
+    
    
 }
 
+.nav-link {
+     font-weight: 500;
+  
+ 
+}
 
 .nav-item {
     display: inline;;
@@ -29,16 +35,14 @@ main {
     font-size: 2rem;
     padding: 2rem;
    
-   
- 
+      
 }
-.nav-item2 {
+
+.navbarauto1 {
     display: flex;
-    flex-direction:column;
-    align-items: center;
-    font-weight: 300;
-    font-size: 2rem;
-    padding-right: 4rem;
+    flex-direction:row;
+    margin-left: 10rem;
+  
 
 }
 
@@ -59,12 +63,6 @@ main {
     justify-content: space-between ;
 }
 
-.sidebar-naisplay_genrev {
-    margin-top: 20px;
-    padding: 0;
-    list-style: none;
-}
-
 .row {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -76,7 +74,79 @@ main {
     text-align: left;
   }
    
+
+   .navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+   }
+
+   .btn  {
+    width:50%;
+    padding: 1rem;
+    margin-top:1rem;
+    background-color: rgb(204, 217, 244);
+    border: 5px solid hwb(256 8% 10%);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1.5rem;
    
+   }
 
+   .btn1  {
+    width:20%;
+    margin-top: -2rem;
+    border: 5px solid hwb(256 8% 10%);
+    background-color: #f9f9f4;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    text-align: center;
+    font-size: 2rem;
+    
+   
+   }
 
+   .form {
+    width:20%;
+    padding: 1rem;
+    margin-top: 1rem;
+    
+    border-radius: 0.5rem;
+    cursor: pointer;
+    text-align: center;
+    font-size: 2rem;
+
+   }
+   input {
+    border: 5px solid hwb(256 8% 10%);
+    background-color: rgb(204, 217, 244);
+    border-radius: 0.5rem;
+    outline: none;
+    padding: 0.3rem;
+    font-size: 2rem;
+    width:60%;
+    margin-top: 1rem;
+}
+
+  .container.puslapiai {
+    display: flex;
+    flex-direction: row;
+    margin-left:80rem;
+ 
+    
+   
+}
+.pagination {
+    display: flex;
+    flex-direction: row;
+    padding: 2rem;
+
+}
+.page-item {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    
+}
 }

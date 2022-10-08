@@ -16,29 +16,18 @@ from django.views.generic import ListView, DetailView, CreateView, DeleteView, U
  
 
 def index(request):
-    # Suskaičiuokime keletą pagrindinių objektų
     num_uzrasai = Uzrasas.objects.all().count()
-    #num_instances = UzrasasInstance.objects.all().count()
-    
-    # Laisvos knygos (tos, kurios turi statusą 'g')
-    #num_instances_available = UzrasasInstance.objects.filter(status__exact='g').count()
-    
-    # Kiek yra autorių    
     num_kategorijos = Kategorija.objects.count()
     
     num_visits = request.session.get('num_visits', 1)
     request.session['num_visits'] = num_visits + 1
 
-    # perduodame informaciją į šabloną žodyno pavidale:
     context = {
         'num_uzrasai': num_uzrasai,
-        #'num_instances': num_instances,
-       # 'num_instances_available': num_instances_available,
         'num_kategorijos': num_kategorijos,
         'num_visits': num_visits,
     }
 
-    # renderiname index.html, su duomenimis kintamąjame context
     return render(request, 'library/index.html', context=context)
 
 
@@ -46,7 +35,6 @@ class UzrasasListView(generic.ListView):
     model = Uzrasas
     context_object_name = 'my_uzrasas_list'
     template_name = 'library/uzrasas_list.html'
-
 
 
 class UzrasasDetailView(generic.DetailView):
@@ -79,6 +67,10 @@ def search(request):
     search_results = Uzrasas.objects.filter(Q(title__icontains=query) | Q(summary__icontains=query))
     return render(request, 'library/search.html', {'uzrasai': search_results, 'query': query})
 
+def filter(request):
+    query = request.GET.get('query')
+    search_results = Kategorija.objects.filter(Q(first_name__icontains=query))
+    return render(request, 'library/filter.html', {'kategorijos': search_results, 'query': query})
 
 def register(request):
     if request.method == 'POST':
@@ -119,8 +111,7 @@ class LoanedUzrasaiByUserListView(LoginRequiredMixin,generic.ListView):
     template_name ='library/user_uzrasai.html'
 
     def get_queryset(self):
-        #return Uzrasas.objects.filter(reader=self.request.user)
-        return Uzrasas.objects.filter(title=self.request.user)
+      return Uzrasas.objects.filter(title=self.request.user)
 
 
 class UzrasasByUserDetailView(LoginRequiredMixin, generic.DetailView):
@@ -133,19 +124,12 @@ class UzrasasByUserCreateView(LoginRequiredMixin, generic.CreateView):
     fields = ['title', 'kategorija', 'summary', 'cover']
     success_url = reverse_lazy('library:myuzrasai')
     template_name = 'library/user_uzrasas_form.html'
-    #form_class = UserUzrasasCreateForm
-
-   # def get_success_url(self):
-   #     return reverse('library:myuzrasai')
+    
 
     def get_absolute_url(self):
         """Nurodo konkretaus aprašymo galinį adresą"""
         return reverse('uzrasas-detail', args=[str(self.id)])
-'''
-    def form_valid(self, form):
-        form.instance.uzrasas.id = self.request.user
-        return super().form_valid(form)
-'''
+
 
 class UzrasasByUserUpdateView(LoginRequiredMixin,  generic.UpdateView):
     model = Uzrasas
@@ -153,33 +137,14 @@ class UzrasasByUserUpdateView(LoginRequiredMixin,  generic.UpdateView):
     success_url = reverse_lazy('library:myuzrasai')
     template_name = 'library/user_uzrasas_form.html'
    
-    
    
-
-    # Toks variantas irgi galimas, atkreipkite demesi
-    # i reverse() ir reverse_lazy() funkcijas
-
-    # def get_success_url(self):
-    #     return reverse('library:mybooks')
-
-    #def get_success_url(self):
-     #   return reverse('library:myuzrasai')
-
-    #def test_func(self):
-     #  uzrasas = self.get_object()
-         #return self.request.user == uzrasas.reader
-
-     
-
 
 class UzrasasByUserDeleteView(LoginRequiredMixin,  generic.DeleteView):
     model = Uzrasas
     success_url = reverse_lazy('library:myuzrasai')
     template_name = 'library/user_uzrasas_delete.html'
 
-   # def test_func(self):
-     #   uzrasas = self.get_object()
-     #   return self.request.user == uzrasas.id
+  
 class KategorijaByUserDetailView(LoginRequiredMixin, generic.DetailView):
     model = Kategorija
     template_name = 'library/user_kategorija.html'
@@ -191,8 +156,6 @@ class LoanedKategorijosiByUserListView(LoginRequiredMixin,generic.ListView):
     template_name ='library/user_kategorijos.html'
 
     def get_queryset(self):
-        #return Uzrasas.objects.filter(reader=self.request.user)
-        #return Kategorija.objects.filter(first_name=self.request.user)
         return Kategorija.objects.filter(first_name=self)
    
 class KategorijaByUserCreateView(LoginRequiredMixin, generic.CreateView):
@@ -200,17 +163,7 @@ class KategorijaByUserCreateView(LoginRequiredMixin, generic.CreateView):
     fields = ['first_name', 'description']
     success_url = reverse_lazy('library:mykategorijos')
     template_name = 'library/user_kategorija_form.html'
-   #form_class = UserUzrasasCreateForm
-
-
-   # def get_success_url(self):
-   #     return reverse('library:myuzrasai')
-'''
-    def form_valid(self, form):
-        form.instance.first_name = self.request.user
-        return super().form_valid(form)
-        '''
-
+  
 class KategorijaByUserUpdateView(LoginRequiredMixin,  generic.UpdateView):
     model = Kategorija
     fields =['first_name', 'description']

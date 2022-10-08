@@ -2,12 +2,12 @@
 
 {% block content %}
     <h1>Užrašai</h1></br>
-    <a class="btn btn-primary" href="{% url 'library:my-uzrasas-new' %}" role="button">Kurkime naują užrašą</a>
+    <a class="btn1" href="{% url 'library:my-uzrasas-new' %}" role="button">Kurkime naują užrašą</a>
     {% if my_uzrasas_list %}
     <div class="row">
     {% for uzrasas in my_uzrasas_list %}
 
-            <div class="col-md-4 d-flex align-items-stretch">
+            <div class="colflexalignitemsstretch">
             <div class="card mb-4 shadow-sm">
                 {% if uzrasas.cover %}
                     <img src="{{ uzrasas.cover.url }}" width="200" height="300" class="card-img-top" alt="...">
@@ -17,12 +17,13 @@
                 <div class="card-body">
                 <h6 class="card-subtitle mb-2 text-muted">{{ my_uzrasas_list.kategorija }}</h6>
                 <p class="card-text"><a href="{{ uzrasas.id }}">{{ uzrasas.title }}</a></p>
-
+             
                 </div>
             </div>
             </div>
         {% endfor %}
         </div>
+       
     {% else %}
         <p>Užrašų niekas neįrašė....</p>
     {% endif %}

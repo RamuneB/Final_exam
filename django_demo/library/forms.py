@@ -3,7 +3,7 @@ from xml.dom import ValidationErr
 from django import forms
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-from .models import Profilis, Uzrasas, Kategorija, UzrasasMano, UzrasoPerziura
+from .models import Profilis, Uzrasas, Kategorija
 
 class RegistrationForm(forms.Form):
     username = forms.CharField(max_length=100)
@@ -42,18 +42,18 @@ class ProfilisUpdateForm(forms.ModelForm):
     class Meta:
         model = Profilis
         fields = ['nuotrauka']
-
-class UzrasoPerziurosForm(forms.ModelForm):
-    class Meta:
-        model = UzrasoPerziura
-        fields = ( 'uzrasas', 'perziuretojas')
-        widgets = {'uzrasas': forms.HiddenInput(), 'perziuretojas': forms.HiddenInput()}
-
-
+'''
 class UserUzrasasCreateForm(forms.ModelForm):
     class Meta:
-        model = UzrasasMano
-        fields = ['uzrasas', 'vartotojas']
-        widgets = {'vartotojas': forms.HiddenInput()}
+        model = Uzrasas
+        fields = ['title', 'kategorija', 'summary', 'cover']
+        #widgets = {'uzrasas.id': forms.HiddenInput()}
+'''
+'''
+class UserKategorijaCreateForm(forms.ModelForm):
+    class Meta:
+        model = Kategorija
+        fields = ['first_name', 'description']
+        widgets = {'kategorija.id': forms.HiddenInput()}
 
-
+'''

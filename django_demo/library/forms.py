@@ -42,18 +42,3 @@ class ProfilisUpdateForm(forms.ModelForm):
     class Meta:
         model = Profilis
         fields = ['nuotrauka']
-'''
-class UserUzrasasCreateForm(forms.ModelForm):
-    class Meta:
-        model = Uzrasas
-        fields = ['title', 'kategorija', 'summary', 'cover']
-        #widgets = {'uzrasas.id': forms.HiddenInput()}
-'''
-'''
-class UserKategorijaCreateForm(forms.ModelForm):
-    class Meta:
-        model = Kategorija
-        fields = ['first_name', 'description']
-        widgets = {'kategorija.id': forms.HiddenInput()}
-
-'''
